@@ -22,6 +22,10 @@ public class DynamicArrayImpl {
 		return elements[index];
 	}
 	
+	public void set(int index,int element) {
+		elements[index] = element;
+	}
+	
 	private void increaseCapacity() {
 		int [] temp = new int[++capacity];
 		copyArray(temp,elements);
