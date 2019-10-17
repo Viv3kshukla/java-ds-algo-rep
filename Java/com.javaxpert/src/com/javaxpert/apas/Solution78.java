@@ -16,23 +16,37 @@ public class Solution78 {
  */
 	
 	
-	public List<List<Integer>> subsets(int [] nums) {
+	public static List<List<Integer>> subsets(int [] nums) {
 		List<List<Integer>> res = new ArrayList<>();
 		backtrack(res,nums,0,new ArrayList<>());
 		return res;
 	}
 	
-	public void backtrack(List<List<Integer>> res, int[] nums,int pos,List<Integer> subset) {
-		if(pos == nums.length) {
+	public static void backtrack(List<List<Integer>> res, int[] nums,int pos,List<Integer> subset) {
+		if(pos == nums.length) {			
 			res.add(new ArrayList<>(subset));
 			return;
 		}
 		
-		backtrack(res,nums,pos+1,subset);
+		// as we are passing through the array 
+		
+		backtrack(res,nums,pos+1,subset);	// without taking current element
 		subset.add(nums[pos]);
-		backtrack(res,nums,pos+1,subset);
+		backtrack(res,nums,pos+1,subset);	// with taking current element
 		subset.remove(subset.size() -1);
 		
+	}
+	
+	public static void main(String args[]) {
+		
+		int [] nums = {1,2};
+		List<List<Integer>> lists = subsets(nums);
+		for(List<Integer> list : lists) {
+			for(Integer val : list) {
+				System.out.print(val + " ");
+			}
+			System.out.println();
+		}
 		
 	}
 	
